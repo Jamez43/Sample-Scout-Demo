@@ -7,7 +7,7 @@ This is the public product-demo repository. It contains the demo site, product d
 ## Try it
 
 - **Try the live demo:** [samplescout.xyz](https://samplescout.xyz/)
-- **Download the desktop app:** visit [Releases](../../releases) for the Apple-silicon macOS build.
+- **Desktop beta:** [release notes](../../releases/tag/v0.1.0-beta.1) explain how invited testers can receive the Apple-silicon macOS build.
 - **Learn how it works:** [Architecture overview](docs/architecture.md)
 
 ## What it does
