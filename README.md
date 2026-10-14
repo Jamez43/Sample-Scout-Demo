@@ -6,7 +6,7 @@ This is the public product-demo repository. It contains the demo site, product d
 
 ## Try it
 
-- **Watch the demo:** [23-second product walkthrough](assets/sample-scout-demo.mp4)
+- **Try the live demo:** [samplescout.xyz](https://samplescout.xyz/)
 - **Download the desktop app:** visit [Releases](../../releases) for the Apple-silicon macOS build.
 - **Learn how it works:** [Architecture overview](docs/architecture.md)
 
@@ -20,5 +20,5 @@ Sample Scout is currently in private beta. If you are a producer interested in t
 
 ## Distribution and rights
 
-The downloadable application is proprietary software. This repository does not grant a license to reproduce, modify, or redistribute Sample Scout or its source code. Demo media is provided solely to demonstrate the product; see the release notes and in-app notices for applicable terms.
+The downloadable application is proprietary software. This repository does not grant a license to reproduce, modify, or redistribute Sample Scout or its source code. See the release notes and in-app notices for applicable terms.
 
