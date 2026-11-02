@@ -1,28 +1,27 @@
 # Architecture overview
 
-Sample Scout is designed around a simple privacy boundary: a producer's library is indexed and searched in their own environment.
+Sample Scout's macOS technical preview searches a producer's selected sample library locally. The public site is a static product page and does not provide remote search.
 
 ```mermaid
 flowchart LR
-  A[Producer's sample files] --> B[Local audio ingestion]
-  B --> C[Audio embeddings and metadata index]
-  D[Natural-language query] --> E[Query embedding]
-  E --> F[Semantic ranking]
+  A[Producer selects local sample files] --> B[Local audio ingestion]
+  B --> C[Audio embeddings and metadata stored locally]
+  D[Natural-language query] --> E[Text embedding in compatible CLAP space]
+  E --> F[Local similarity ranking]
   C --> F
-  F --> G[Ranked sample results]
-  G --> H[Local audio preview]
+  F --> G[Matching local file paths]
+  G --> H[Playback reads original local file]
 ```
 
 ## Main pieces
 
 | Component | Responsibility |
 | --- | --- |
-| Local audio ingestion | Reads supported audio formats and records metadata for a producer's library. |
-| Semantic index | Represents the musical and sonic characteristics of each sample for similarity search. |
-| Query and ranking | Converts a producer's description into a search query and ranks likely matches. |
-| Desktop interface | Lets producers search, inspect, and preview results without sending their library to a public catalog. |
+| Local audio ingestion | Reads supported audio files selected from the producer's Mac and records their metadata. |
+| Local index | Stores audio embeddings and metadata on the Mac for similarity search. |
+| Query and ranking | Embeds a text description in a compatible CLAP space and ranks local matches. |
+| Desktop interface | Lets producers search, inspect, and preview matching files from their original local paths. |
 
-## Privacy note
+## Privacy and model downloads
 
-The architecture intentionally keeps a producer's private sample collection separate from the public demo experience. The public demo uses only licensed demonstration audio and exposes no user-uploaded library content.
-
+Sample indexing, text search, similarity ranking, and playback operate locally. Sample audio is not uploaded to a remote service. The application downloads model files on first use, so an internet connection is needed for that initial download.

@@ -3,28 +3,111 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Sample Scout helps producers find sounds in their sample libraries using natural language." />
+    <meta name="description" content="Find sounds in your sample library with natural-language search on your Mac." />
     <title>Sample Scout — Find the sound in your head</title>
     <style>
-      :root { color-scheme: dark; --ink:#f8f7f4; --mute:#a9aaa6; --lime:#cbfa62; --surface:#171817; --line:#343635; }
-      * { box-sizing:border-box; } body { margin:0; background:#0c0d0c; color:var(--ink); font:16px/1.5 Inter, ui-sans-serif, system-ui, sans-serif; }
-      main { max-width:1080px; margin:auto; padding:24px; } nav { display:flex; justify-content:space-between; align-items:center; padding:8px 0 80px; } .brand { font-weight:800; letter-spacing:-.04em; } .tag { color:#0b0c0b; background:var(--lime); border-radius:100px; padding:5px 10px; font-size:12px; font-weight:700; }
-      .hero { max-width:800px; padding:48px 0 72px; } h1 { font-size:clamp(48px,9vw,105px); letter-spacing:-.075em; line-height:.91; margin:0 0 26px; } .hero p { max-width:570px; color:var(--mute); font-size:20px; } .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; } a { color:inherit; } .button { display:inline-block; text-decoration:none; border:1px solid var(--line); border-radius:8px; padding:12px 18px; font-weight:700; } .button.primary { background:var(--lime); color:#111; border-color:var(--lime); }
-      .demo { background:var(--surface); border:1px solid var(--line); border-radius:16px; overflow:hidden; } video { width:100%; display:block; } .caption { display:flex; justify-content:space-between; gap:16px; padding:16px 18px; color:var(--mute); font-size:14px; }
-      section { padding:80px 0; } h2 { font-size:36px; letter-spacing:-.04em; } .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; } .card { border:1px solid var(--line); border-radius:12px; padding:22px; background:var(--surface); } .card h3 { margin-top:0; } .card p { color:var(--mute); margin-bottom:0; } footer { border-top:1px solid var(--line); padding:24px 0 48px; color:var(--mute); font-size:14px; } @media (max-width:650px) { nav { padding-bottom:36px; } .grid { grid-template-columns:1fr; } .caption { display:block; } }
+      :root { color-scheme: dark; --ink:#f8f7f4; --mute:#b8bab4; --lime:#cbfa62; --surface:#171817; --line:#343635; }
+      * { box-sizing:border-box; }
+      html { scroll-behavior:smooth; }
+      body { margin:0; background:#0c0d0c; color:var(--ink); font:16px/1.55 Inter,ui-sans-serif,system-ui,sans-serif; }
+      main { max-width:1080px; margin:auto; padding:24px; }
+      header { display:flex; justify-content:space-between; align-items:center; padding:8px 0 64px; }
+      .brand { font-weight:800; letter-spacing:-.04em; }
+      .tag { color:#0b0c0b; background:var(--lime); border-radius:100px; padding:7px 12px; font-size:12px; font-weight:750; }
+      .hero { max-width:800px; padding:24px 0 72px; }
+      h1 { font-size:clamp(48px,9vw,105px); letter-spacing:-.075em; line-height:.94; margin:0 0 26px; }
+      .hero p { max-width:620px; color:var(--mute); font-size:20px; }
+      .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+      a { color:inherit; }
+      a:focus-visible { outline:3px solid var(--lime); outline-offset:4px; border-radius:3px; }
+      .button { display:inline-flex; min-height:48px; align-items:center; text-decoration:none; border:1px solid var(--line); border-radius:8px; padding:11px 18px; font-weight:700; }
+      .button.primary { background:var(--lime); color:#111; border-color:var(--lime); }
+      section { padding:72px 0; scroll-margin-top:24px; }
+      h2 { font-size:clamp(30px,5vw,42px); line-height:1.1; letter-spacing:-.045em; margin:0 0 24px; }
+      .demo { background:var(--surface); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+      .placeholder { position:relative; }
+      .placeholder img { width:100%; height:auto; display:block; }
+      .coming-soon { position:absolute; inset:auto 0 0; padding:28px 24px 20px; background:linear-gradient(transparent,rgba(0,0,0,.86)); font-weight:700; }
+      video { width:100%; display:block; background:#000; }
+      video[hidden] { display:none; }
+      .caption { display:flex; justify-content:space-between; gap:16px; padding:16px 18px; color:var(--mute); font-size:14px; }
+      .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+      .steps { counter-reset:step; }
+      .card { border:1px solid var(--line); border-radius:12px; padding:22px; background:var(--surface); }
+      .steps .card::before { counter-increment:step; content:"0" counter(step); color:var(--lime); font-size:13px; font-weight:800; letter-spacing:.08em; }
+      .card h3 { margin:12px 0 8px; }
+      .card p, .detail { color:var(--mute); margin-bottom:0; }
+      .compat { border-left:3px solid var(--lime); padding:4px 0 4px 18px; color:var(--mute); }
+      footer { border-top:1px solid var(--line); padding:24px 0 48px; color:var(--mute); font-size:14px; }
+      footer a { display:inline-flex; min-height:44px; align-items:center; }
+      @media (max-width:650px) { main { padding:20px; } header { align-items:flex-start; gap:12px; padding-bottom:36px; } .tag { max-width:170px; text-align:center; } .hero { padding:16px 0 52px; } .hero p { font-size:18px; } section { padding:52px 0; } .grid { grid-template-columns:1fr; } .caption { display:block; } }
+      @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
     </style>
   </head>
   <body>
     <main>
-      <nav><span class="brand">SAMPLE SCOUT</span><span class="tag">PRIVATE BETA</span></nav>
-      <div class="hero">
-        <h1>Find the sound in your head.</h1>
-        <p>Search your sample library in plain language. Sample Scout understands what producers mean—not just filenames and folders.</p>
-        <div class="actions"><a class="button primary" href="https://samplescout.xyz/">Try the live demo</a><a class="button" href="../../releases/tag/v0.1.0-beta.1">Desktop beta</a></div>
-      </div>
-      <div class="demo"><div class="caption"><span>Try the live demo to search “punchy kick,” inspect ranked matches, and preview samples.</span><a href="https://samplescout.xyz/">Open Sample Scout →</a></div></div>
-      <section><h2>Built for the moment inspiration strikes.</h2><div class="grid"><article class="card"><h3>Say what you hear</h3><p>Use musical language like “warm Rhodes” or “snare with reverb”—not brittle tags.</p></article><article class="card"><h3>Preview fast</h3><p>See relevant matches, listen immediately, and keep your creative momentum.</p></article><article class="card"><h3>Keep it private</h3><p>The desktop experience works with your local collection, so your sounds remain yours.</p></article></div></section>
-      <footer>© Sample Scout. Proprietary software. <a href="README.md">Product documentation</a></footer>
+      <header><span class="brand">SAMPLE SCOUT</span><span class="tag">macOS technical preview</span></header>
+      <section class="hero" aria-labelledby="page-title">
+        <h1 id="page-title">Find the sound in your head.</h1>
+        <p>Search your sample library in plain language. Describe the sound you want, then find and preview matches from your own collection.</p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/Jamez43/Sample-Scout-Demo/releases/tag/v0.1.0-beta.1" target="_blank" rel="noopener noreferrer">Get the demo</a>
+          <a class="button" href="#walkthrough">Watch the walkthrough</a>
+        </div>
+      </section>
+
+      <section id="walkthrough" aria-labelledby="walkthrough-title">
+        <h2 id="walkthrough-title">A closer look at Sample Scout</h2>
+        <div class="demo">
+          <div class="placeholder" id="walkthrough-placeholder">
+            <img src="assets/sample-scout-walkthrough-poster.svg" alt="Sample Scout walkthrough preview with a sound-wave graphic and a coming soon message." />
+            <div class="coming-soon">Desktop walkthrough coming soon</div>
+          </div>
+          <video id="walkthrough-video" controls playsinline preload="metadata" poster="assets/sample-scout-walkthrough-poster.svg" hidden aria-label="Sample Scout desktop walkthrough">
+            <source src="assets/sample-scout-walkthrough.mp4" type="video/mp4" />
+            <track kind="captions" src="assets/sample-scout-walkthrough.en.vtt" srclang="en" label="English" />
+            Your browser does not support HTML video.
+          </video>
+          <div class="caption"><span>Select a local library, index it, then search and preview sounds.</span></div>
+        </div>
+      </section>
+
+      <section aria-labelledby="how-title">
+        <h2 id="how-title">From library to sound in three steps.</h2>
+        <div class="grid steps">
+          <article class="card"><h3>Choose your library</h3><p>Select a sample folder on your Mac.</p></article>
+          <article class="card"><h3>Index locally</h3><p>Sample Scout builds a local index of your audio.</p></article>
+          <article class="card"><h3>Search by feel</h3><p>Describe a sound in natural language and preview matching samples.</p></article>
+        </div>
+      </section>
+
+      <section aria-labelledby="benefits-title">
+        <h2 id="benefits-title">Built for the moment inspiration strikes.</h2>
+        <div class="grid">
+          <article class="card"><h3>Say what you hear</h3><p>Search for “warm Rhodes” or “snare with reverb” without relying on filenames.</p></article>
+          <article class="card"><h3>Preview fast</h3><p>Listen to relevant matches and keep your creative momentum.</p></article>
+          <article class="card"><h3>Keep samples local</h3><p>Indexing, search, and playback happen on your Mac. Sample audio is not uploaded to a hosted search service.</p></article>
+        </div>
+      </section>
+
+      <section aria-labelledby="technical-title">
+        <h2 id="technical-title">A local search workflow</h2>
+        <p class="detail">Sample Scout uses compatible CLAP audio and text embeddings to represent sounds and search descriptions in the same space. It indexes audio locally, ranks results by similarity, and plays the original local files. The model downloads on first use; sample audio is not sent to a hosted search backend.</p>
+      </section>
+
+      <section aria-labelledby="compatibility-title">
+        <h2 id="compatibility-title">Technical preview details</h2>
+        <p class="compat">For Apple silicon Macs running macOS 26 or newer. The download is approximately 261 MiB; the model download is roughly 600 MB on first use and requires an internet connection. The app is ad-hoc signed and not notarized, so macOS may show a Gatekeeper warning.</p>
+      </section>
+
+      <footer>Questions or feedback? <a href="mailto:jameswyllie42@gmail.com?subject=Sample%20Scout%20feedback">Email the Sample Scout team</a>. Proprietary software.</footer>
     </main>
+    <script>
+      const video = document.querySelector('#walkthrough-video');
+      video.addEventListener('canplay', () => {
+        video.hidden = false;
+        document.querySelector('#walkthrough-placeholder').hidden = true;
+      }, { once: true });
+    </script>
   </body>
 </html>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Sample Scout desktop walkthrough</title>
+  <desc id="desc">A sound wave on a dark background with Sample Scout branding.</desc>
+  <defs>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#cbfa62" stop-opacity=".19" />
+      <stop offset="1" stop-color="#cbfa62" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="#0c0d0c" />
+  <circle cx="880" cy="275" r="360" fill="url(#glow)" />
+  <g fill="#cbfa62" opacity=".9">
+    <rect x="648" y="275" width="12" height="70" rx="6" />
+    <rect x="678" y="244" width="12" height="132" rx="6" />
+    <rect x="708" y="214" width="12" height="192" rx="6" />
+    <rect x="738" y="260" width="12" height="100" rx="6" />
+    <rect x="768" y="186" width="12" height="248" rx="6" />
+    <rect x="798" y="230" width="12" height="160" rx="6" />
+    <rect x="828" y="155" width="12" height="310" rx="6" />
+    <rect x="858" y="222" width="12" height="176" rx="6" />
+    <rect x="888" y="195" width="12" height="230" rx="6" />
+    <rect x="918" y="260" width="12" height="100" rx="6" />
+    <rect x="948" y="231" width="12" height="158" rx="6" />
+    <rect x="978" y="276" width="12" height="68" rx="6" />
+  </g>
+  <text x="76" y="102" fill="#f8f7f4" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="24" font-weight="800" letter-spacing="-1">SAMPLE SCOUT</text>
+  <rect x="76" y="145" width="222" height="1" fill="#343635" />
+  <text x="76" y="407" fill="#f8f7f4" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="56" font-weight="700" letter-spacing="-3">Find the sound</text>
+  <text x="76" y="472" fill="#f8f7f4" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="56" font-weight="700" letter-spacing="-3">in your head.</text>
+  <circle cx="1080" cy="560" r="26" fill="#cbfa62" />
+  <path d="M1076 548v24l18-12z" fill="#111" />
+</svg>

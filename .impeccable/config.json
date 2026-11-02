@@ -1,0 +1,23 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "extreme-negative-tracking",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-02T16:42:17.179Z",
+        "reason": "Agent: retained pre-existing display tracking from baseline; screenshot review shows the heading remains legible and the approved plan did not call for typography redesign"
+      },
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-11-02T16:42:17.195Z",
+        "reason": "Agent: retained the pre-existing Inter system font stack from the baseline; changing typography was outside the approved plan"
+      }
+    ]
+  }
+}

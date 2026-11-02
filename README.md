@@ -1,24 +1,24 @@
-# Sample Scout — Product Demo
+# Sample Scout
 
-Sample Scout helps music producers find the right sound in their own sample library using natural-language search.
+Sample Scout helps music producers find sounds in their own sample libraries with natural-language search. It is a downloadable **macOS technical preview**; this repository contains the public product site and documentation, not the proprietary application source.
 
-This is the public product-demo repository. It contains the demo site, product documentation, and release notes. The application source code and private-library implementation are intentionally not included.
+## Get the app
 
-## Try it
+- [Get the demo from the existing GitHub Release](https://github.com/Jamez43/Sample-Scout-Demo/releases/tag/v0.1.0-beta.1)
+- [Watch the desktop walkthrough](https://samplescout.xyz/#walkthrough) (recording coming soon)
 
-- **Try the live demo:** [samplescout.xyz](https://samplescout.xyz/)
-- **Desktop beta:** [release notes](../../releases/tag/v0.1.0-beta.1) explain how invited testers can receive the Apple-silicon macOS build.
-- **Learn how it works:** [Architecture overview](docs/architecture.md)
+The preview supports **Apple silicon Macs running macOS 26 or newer**. The app download is approximately **261 MiB**. On first use it downloads roughly **600 MB of model files**, so an internet connection is required for that download. Sample indexing, search, and playback happen locally; sample audio is not uploaded to a search service. No account is required.
 
-## What it does
+The app is ad-hoc signed and not notarized. macOS Gatekeeper may show a warning when opening it; follow the installation instructions in the release notes.
 
-Describe the sound you want—such as “punchy kick” or “airy vocal texture”—then browse ranked audio matches and preview them before opening the file in your workflow. Your library stays private: the desktop edition indexes and searches locally.
+## How it works
 
-## Beta feedback
+Choose a local sample folder, let Sample Scout index it on your Mac, then search in natural language and preview matching files. See the [architecture overview](docs/architecture.md) for details.
 
-Sample Scout is currently in private beta. If you are a producer interested in testing it with your own sample library, please open an issue using the **Beta feedback** template.
+## Feedback and support
+
+For problems, questions, or feedback, email [jameswyllie42@gmail.com](mailto:jameswyllie42@gmail.com?subject=Sample%20Scout%20feedback).
 
 ## Distribution and rights
 
 The downloadable application is proprietary software. This repository does not grant a license to reproduce, modify, or redistribute Sample Scout or its source code. See the release notes and in-app notices for applicable terms.
-
