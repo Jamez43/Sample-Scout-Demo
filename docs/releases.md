@@ -1,6 +1,6 @@
 # Releases
 
-The existing [Sample Scout v0.1.0-beta.1 GitHub Release](https://github.com/Jamez43/Sample-Scout-Demo/releases/tag/v0.1.0-beta.1) is the download destination for the macOS technical preview. The application is proprietary and its binaries belong in GitHub Releases, not Git history.
+The [Sample Scout v0.2.0-beta.1 GitHub Release](https://github.com/Jamez43/Sample-Scout-Demo/releases/tag/v0.2.0-beta.1) is the download destination for the macOS technical preview. The application is proprietary and its binaries belong in GitHub Releases, not Git history.
 
 ## Installation notes
 
@@ -18,6 +18,6 @@ Before directing users to a release, confirm that its public page contains:
 
 ## Future maintainer procedure
 
-When preparing a future app version, build its archive from the private application repository, publish it as a GitHub Release, and upload the ZIP and matching checksum there. Include supported hardware, limitations, installation steps, first-run model download, privacy, and support details in the notes. This procedure does not change the existing release.
+When preparing a future app version, build its archive from the private application repository, publish it as a GitHub Release, and upload the ZIP and matching checksum there. Include supported hardware, limitations, installation steps, first-run model download, privacy, and support details in the notes.
 
 Keep private source, credentials, local databases, customer files, model caches, and application binaries out of this repository and Git history.

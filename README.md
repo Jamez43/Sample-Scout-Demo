@@ -4,7 +4,7 @@ Sample Scout helps music producers find sounds in their own sample libraries wit
 
 ## Get the app
 
-- [Get the demo from the existing GitHub Release](https://github.com/Jamez43/Sample-Scout-Demo/releases/tag/v0.1.0-beta.1)
+- [Get the demo from the latest GitHub Release](https://github.com/Jamez43/Sample-Scout-Demo/releases/tag/v0.2.0-beta.1)
 - [Watch the desktop walkthrough](https://samplescout.xyz/#walkthrough) (recording coming soon)
 
 The preview supports **Apple silicon Macs running macOS 26 or newer**. The app download is approximately **261 MiB**. On first use it downloads roughly **600 MB of model files**, so an internet connection is required for that download. Sample indexing, search, and playback happen locally; sample audio is not uploaded to a search service. No account is required.
